@@ -63,41 +63,41 @@ showModal=()=>{
 }
 userlogin=(emailID,password)=>{
   
-    firebase.auth().signInWithEmailAndPassword(emailID,password)
-    .then(()=>{
-        return Alert.alert("Login Sucessful")
-    })
-    .catch((error)=>{
+  firebase.auth().signInWithEmailAndPassword(emailID,password)
+  .then(()=>{
+      this.props.navigation.navigate('DonateBooks')
+  })
+  .catch((error)=>{
 var errorcode = error.code
 var errorMessage = error.errorMessage
 return Alert.alert(errorMessage)
-    })
+  })
 }
 userSignUp=(emailID,password,confirmPassword)=>{
-  if(password!==confirmPassword){
-    return(
-      Alert.alert("Password does not match")
-    )
-  }else{
-    firebase.auth().createUserWithEmailAndPassword(emailID,password)
-    .then(()=>{
-      db.collection('users').add({
-        first_name:this.state.firstName,
-        last_name:this.state.lastName,
-        contact:this.state.contact,
-        address:this.state.address,
-        email_Id:this.state.emailID
-      })
-        return Alert.alert("User Added Sucessfully","",[{text:"ok",onPress:()=>{this.setState({
-         'isModalVisible':false
-        })}}])
+if(password!==confirmPassword){
+  return(
+    Alert.alert("Password does not match")
+  )
+}else{
+  firebase.auth().createUserWithEmailAndPassword(emailID,password)
+  .then(()=>{
+    db.collection('users').add({
+      first_name:this.state.firstName,
+      last_name:this.state.lastName,
+      contact:this.state.contact,
+      address:this.state.address,
+      email_Id:this.state.emailID
     })
-    .catch((error)=>{
+      return Alert.alert("User Added Sucessfully","",[{text:"ok",onPress:()=>{this.setState({
+       'isModalVisible':false
+      })}}])
+  })
+  .catch((error)=>{
 var errorcode = error.code
 console.log(errorcode)
 var errorMessage = error.errorMessage
 return Alert.alert(errorMessage)
-    })
+  })
 }
 }
 render(){
