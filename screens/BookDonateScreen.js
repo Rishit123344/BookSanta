@@ -31,7 +31,7 @@ componentWillUnmount(){
 keyExtractor = (item,index)=>{index.toString()}
 renderItem = ({item,i})=>{
     return(
-        <ListItem key = {i}title={item.book_name}subtitle={item.reason_to_request}titleStyle={{color:'black',fontWeight:'bold'}}rightElement={<TouchableOpacity style={styles.button}>
+        <ListItem key = {i}title={item.book_name}subtitle={item.reason_to_request}titleStyle={{color:'black',fontWeight:'bold'}}rightElement={<TouchableOpacity style={styles.button}onPress={()=>{this.props.navigation.navigate('ReceiverDetails',{'details':item})}}>
             <Text style={{color:'#FFFF'}}>View</Text>
         </TouchableOpacity>}bottomDivider></ListItem>
     )

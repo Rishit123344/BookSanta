@@ -12,5 +12,6 @@ require ('@firebase/firestore')
         measurementId: "G-8HYXTV5EPK"
 };
 // Initialize Firebase
-if(!firebase.apps.length){ firebase.initializeApp(firebaseConfig); }
+//if(!firebase.apps.length){}
+ firebase.initializeApp(firebaseConfig); 
 export default firebase.firestore();

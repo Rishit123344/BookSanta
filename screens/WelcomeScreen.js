@@ -74,6 +74,7 @@ return Alert.alert(errorMessage)
   })
 }
 userSignUp=(emailID,password,confirmPassword)=>{
+  console.log(emailID,password,confirmPassword)
 if(password!==confirmPassword){
   return(
     Alert.alert("Password does not match")
